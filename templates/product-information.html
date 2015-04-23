@@ -1,0 +1,7 @@
+<div class="product-information">
+	<h3>{{product.name | uppercase}}</h3>
+	<img ng-src="{{product.imageurl}}"/>
+	<h4>{{product.cost}}</h4>
+	<p>{{product.description}}</p>	
+	<a class="btn btn-primary" ng-show="product.isAvailable" href="#">Add to Cart</a>	
+</div>

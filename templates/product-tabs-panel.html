@@ -1,0 +1,52 @@
+				<section>
+					<ul class="nav nav-tabs">
+						<li ng-class="{active:tab.getSelectedTab() === 1}">
+							<a ng-click="tab.setTab(1)" href="">Description</a>
+						</li>
+						<li ng-class="{active:tab.getSelectedTab() === 2}">
+							<a ng-click="tab.setTab(2)" href="">Specs</a>
+						</li>
+						<li ng-class="{active:tab.getSelectedTab() === 3}">
+							<a ng-click="tab.setTab(3)" href="">Reviews</a>
+						</li>
+					</ul>
+				</section>	
+				<div ng-show="tab.getSelectedTab() === 1">{{product.description}}</div>
+				<div ng-show="tab.getSelectedTab() === 2">{{product.specification}}</div>
+				<div ng-show="tab.getSelectedTab() === 3">
+					
+					<!-- If i remove the track by index it will throw the error. -->
+					<!-- Review Section-->
+					<div ng-repeat="review in product.reviews track by $index">
+						<blockquote>
+							<div class="name">{{review.name}}</div>
+							<div class="email">{{review.email}}</div>
+							<div class="description">{{review.description}}</div>
+						</blockquote>
+					</div>	
+										
+					<!-- Review Form to add new reviews-->
+					<form role="form" name="reviewForm" ng-controller="reviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReviewsToList(product)" novalidate>
+						<!-- Live Review -->
+						<blockquote ng-show="reviewCtrl.myForm.name.length">
+							<div>{{reviewCtrl.myForm.name}}</div>
+							<div>{{reviewCtrl.myForm.email}}</div>
+							<div>{{reviewCtrl.myForm.description}}</div>
+						</blockquote>
+						<div class="form-group">
+							<label>Name</label>
+							<input class="form-control" placeholder="Enter Name" ng-model="reviewCtrl.myForm.name" type="text" required>
+						</div>
+						<div class="form-group">
+							<label>Email</label>
+							<input class="form-control" placeholder="Enter Email" ng-model="reviewCtrl.myForm.email" type="email" required>
+						</div>
+						<div class="form-group">
+							<label>Description</label>
+							<textarea class="form-control" placeholder="Enter Description" ng-model="reviewCtrl.myForm.description" rows="4" cols="50" required></textarea>
+						</div>
+					
+						<button ng-disabled="!(reviewCtrl.myForm.name.length) || !(reviewCtrl.myForm.email.length) || !(reviewCtrl.myForm.description.length)" type="submit" class="btn btn-primary">Submit</button>
+					</form>
+
+				</div>

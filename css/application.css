@@ -1,0 +1,20 @@
+body {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.nav-container{background-color: #fff;}
+li{list-style:none;}
+
+blockquote{
+  min-height: 80px;
+  font-size: 15px;
+}
+
+.product-information{
+	margin-bottom: 20px;	
+}
+
+/*INPUT FIELDS*/
+.ng-dirty.ng-invalid{border-color: red;}
+.ng-dirty.ng-valid{border-color: green;}
